@@ -1,0 +1,56 @@
+version: '3'
+services:
+  db:
+    restart: always
+    image: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=izhal
+      - MYSQL_DATABASE=testing
+      - MYSQL_USER=izhal
+      - MYSQL_PASSWORD=izhal
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - 80:80
+  redis:
+    image: redis
+  api:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./server
+    volumes:
+      - /app/node_modules
+      - ./server:/app
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - PGUSER=postgres
+      - PGHOST=db
+      - PGDATABASE=postgres
+      - PGPASSWORD=postgres_password
+      - PGPORT=5432
+      - DBHOST=db
+      - DBUSER=izhal
+  client:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+  worker:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./worker
+    volumes:
+      - /app/node_modules
+      - ./worker:/app
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
