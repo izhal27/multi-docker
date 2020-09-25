@@ -9,10 +9,10 @@ script:
   - docker run izhal/react-test npm run coverage
 
 after_success:
-  - docker build -t izha/multi-client ./client
-  - docker build -t izha/multi-nginx ./nginx
-  - docker build -t izha/multi-server ./server
-  - docker build -t izha/multi-worker ./worker
+  - docker build -t izhal/multi-client ./client
+  - docker build -t izhal/multi-nginx ./nginx
+  - docker build -t izhal/multi-server ./server
+  - docker build -t izhal/multi-worker ./worker
   # login into docker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # push images to docker hub
