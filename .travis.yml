@@ -5,6 +5,8 @@ services:
 
 before_install:
   - docker build -t izhal/react-test -f ./client/Dockerfile.dev ./client
+  - curl https://cli-assets.heroku.com/install.sh | sh  #install heroku
+  - heroku auth:token
 
 script:
   - docker run izhal/react-test npm run coverage
