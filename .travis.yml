@@ -27,6 +27,7 @@ deploy:
   api_key:
     secure: $HEROKU_API_KEY
   app: multi-docker27
+  strategy: git
   on:
     repo: 'izhal27/multi-docker'
 
