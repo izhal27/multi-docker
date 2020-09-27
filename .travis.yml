@@ -28,4 +28,9 @@ deploy:
     secure: $HEROKU_API_KEY
   app: multi-docker27
   on:
-    repo: izhal27/multi-docker
+    repo: 'izhal27/multi-docker'
+
+notifications:
+  email:
+    on_success: never
+    on_failure: never
