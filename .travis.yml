@@ -24,9 +24,10 @@ after_success:
 
 deploy:
   provider: heroku
-  api_key:
-    secure: $HEROKU_API_KEY
+  api_key: $HEROKU_API_KEY
   app: multi-docker27
+  on:
+    repo: 'izhal27/multi-docker'
 
 notifications:
   email:
