@@ -22,10 +22,10 @@ after_success:
   - docker push izhal/multi-server
   - docker push izhal/multi-worker
 
-  deploy:
-    provider: heroku
-    api_key:
-      - secure: $HEROKU_API_KEY
-    app: multi-docker27
-    on:
-      - repo: izhal27/multi-docker
+deploy:
+  provider: heroku
+  api_key:
+    - secure: $HEROKU_API_KEY
+  app: multi-docker27
+  on:
+    - repo: izhal27/multi-docker
