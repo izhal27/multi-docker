@@ -14,9 +14,9 @@ services:
       dockerfile: Dockerfile.dev
       context: ./nginx
     ports:
-      - 80:80
+      - 3050:80
   redis:
-    image: redis
+    image: redis:alpine
   api:
     restart: always
     build:
